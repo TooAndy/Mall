@@ -1,6 +1,9 @@
 package top.aniss.mall.dao;
 
+import org.apache.ibatis.annotations.Param;
 import top.aniss.mall.pojo.Product;
+
+import java.util.List;
 
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,12 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    List<Product> selectList();
+
+    List<Product> selectByNameAndProductId(@Param("productName") String productName,
+                                           @Param("productId") Integer productId);
+
+    List<Product> selectByNameAndCategoryIds(@Param("productName") String productName,
+                                             @Param("categoryList") List<Integer> categoryList);
 }

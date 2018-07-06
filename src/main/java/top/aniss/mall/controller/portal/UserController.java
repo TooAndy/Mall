@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  * create 2018-07-03 下午5:46
  */
 @Controller
-@RequestMapping("/user/")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
