@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
-@RequestMapping("/manage/category")
+@RequestMapping("/manage/category/")
 public class CategoryManageController {
 
     @Autowired
@@ -96,6 +96,4 @@ public class CategoryManageController {
             return ServerResponse.createByErrorMessage("无权限操作, 需要管理员权限");
         }
     }
-
-
 }

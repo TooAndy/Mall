@@ -34,12 +34,18 @@ public class CategoryServiceImpl implements ICategoryService {
         if (parentId == null || StringUtils.isBlank(categoryName)) {
             return ServerResponse.createByErrorMessage("添加品类参数错误");
         }
+        // 判断是否已经存在该categoryName
+        int rowCount = categoryMapper.selectByCategoryName(categoryName);
+        if (rowCount > 0) {
+            return ServerResponse.createByErrorMessage("该品类名已经存在");
+        }
+        // 添加新的品类
         Category category = new Category();
         category.setName(categoryName);
         category.setParentId(parentId);
         category.setStatus(true);
 
-        int rowCount = categoryMapper.insert(category);
+        rowCount = categoryMapper.insert(category);
         if (rowCount > 0) {
             return ServerResponse.createBySuccess("添加品类成功");
         }

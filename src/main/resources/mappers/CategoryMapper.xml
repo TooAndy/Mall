@@ -123,4 +123,10 @@
         from mmall_category
         where parent_id = #{parentId}
     </select>
+
+    <select id="selectByCategoryName" resultType="int" parameterType="string">
+        select count(1)
+        from mmall_category
+        where name = #{categoryName}
+    </select>
 </mapper>
